@@ -1,0 +1,248 @@
+{{#section 'title'}}
+Guasap - Chat
+{{/section}}
+
+{{#section 'style'}}
+<style>
+    body {
+        background-color: #222;
+        font-family: "Roboto";
+        font-weight: 300;
+    }
+    .main_container {
+        margin-left: 1vw;
+        margin-right: 1vw;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        width: 98vw;
+        height: 98vh;
+        --mdc-layout-grid-margin-desktop: 16px;
+        --mdc-layout-grid-gutter-desktop: 16px;
+        --mdc-layout-grid-margin-tablet: 16px;
+        --mdc-layout-grid-gutter-tablet: 16px;
+        --mdc-layout-grid-margin-phone: 16px;
+        --mdc-layout-grid-gutter-phone: 16px;
+        
+    }
+
+    .contacts_column {
+        height: calc(98vh - 80px);
+        background-color: #494444;
+    }
+
+    .messages_input_column {
+        height: calc(98vh - 80px);
+        background-color: #494444;
+    }
+
+
+    .contacts_row {
+        overflow-y: auto;
+        height: calc(98vh - 96px);
+    }
+    .messages_row {
+        overflow-y: auto;
+        height: calc(98vh - 164px);
+    }
+
+    .input_row {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .mdc-menu--open {
+        min-width: 30px; 
+        float: right; 
+        top: 0px; 
+        left: unset !important; 
+        right: 5px !important; 
+        margin-top: -0.5em;
+    }
+
+    .app-fab--absolute {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    @media (min-width: 840px) {
+        .contacts_bar_column {
+            grid-column-end: span 3;
+        }
+        .contacts_column {
+            grid-column-end: span 3;
+        }
+        .messages_bar_column {
+            grid-column-end: span 9;
+        }
+        .messages_input_column {
+            grid-column-end: span 9;
+        }
+    }
+
+    @media (max-width: 839px) and (min-width: 480px) {
+        .contacts_bar_column {
+            grid-column-end: span 3
+        }
+        .contacts_column {
+            grid-column-end: span 3;
+        }
+        .messages_bar_column {
+            grid-column-end: span 5;
+        }
+        .messages_input_column {
+            grid-column-end: span 5;
+        }
+    }
+
+    @media (max-width: 479px) {
+        .contacts_bar_column {
+            display: none;
+        }
+        .contacts_column {
+            display: none;
+        }
+        .messages_bar_column {
+            grid-column-end: span 4;
+        }
+        .messages_input_column {
+            grid-column-end: span 4;
+        }
+    }
+
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+        color: #018786;
+    }
+</style>
+{{/section}}
+
+{{#section 'body'}}
+<div class="mdc-layout-grid mdc-layout-grid--fixed-column-width main_container">
+    <div class="mdc-layout-grid__inner contacts_bar_messages_bar_row">
+        <div class="mdc-layout-grid__cell mdc-elevation--z6 contacts_bar_column">
+            <header class="mdc-top-app-bar mdc-top-app-bar--dense" style="position:relative; background-color: #018786; color: #222222;">
+                <div class="mdc-top-app-bar__row">
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                        <span class="mdc-top-app-bar__title">Contactos</span>
+                    </section>
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                        <button id="addContactButton" class="material-icons" style="text-decoration:none; width: 48px; height: 48px; color: #222222; border: none; background-color: transparent; outline: none; cursor: pointer;">more_vert</button>
+                        <div id="addContactMenu" class="mdc-menu" style="min-width: 30px;" data-mdc-auto-init="MDCMenu" tabindex="-1">
+                            <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
+                                <li class="mdc-list-item mdc-ripple-upgraded" role="menuitem" tabindex="0" style="--mdc-ripple-fg-size:102px; --mdc-ripple-fg-scale:1.82987; --mdc-ripple-fg-translate-start:32px, -35.1875px; --mdc-ripple-fg-translate-end:34px, -27px;">Agregar contacto</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </header>         
+        </div>
+        <div class="mdc-layout-grid__cell mdc-elevation--z6 messages_bar_column">
+            <div>
+                <header class="mdc-top-app-bar mdc-top-app-bar--dense" style="position:relative; background-color: #018786; color: #222222;">
+                    <div class="mdc-top-app-bar__row">
+                        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                            <span class="mdc-top-app-bar__title" id="currentChat" data-id="" data-user=""></span>
+                        </section>
+                        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                            <button id="deleteMessagesButton" class="material-icons" style="text-decoration:none; width: 48px; height: 48px; color: #222222; border: none; background-color: transparent; outline: none; cursor: pointer;" disabled>more_vert</button>
+                            <div id="deleteMessagesMenu" class="mdc-menu" style="min-width: 30px;" data-mdc-auto-init="MDCMenu" tabindex="-1">
+                                <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
+                                    <li class="mdc-list-item mdc-ripple-upgraded" role="menuitem" tabindex="0" style="--mdc-ripple-fg-size:102px; --mdc-ripple-fg-scale:1.82987; --mdc-ripple-fg-translate-start:32px, -35.1875px; --mdc-ripple-fg-translate-end:34px, -27px;">Borrar mensajes</li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdc-layout-grid__inner contacts_messages_row">
+        <div class="mdc-layout-grid__cell mdc-elevation--z4 contacts_column">
+            <ul class="mdc-list contacts_row" id="contactsMenu"></ul>
+                    
+            <div class="mdc-text-field mdc-text-field--dense input_row" style="display: flex; bottom: 20px; right: 5px;">
+                <button id="logoutButton" class="mdc-fab mdc-fab--mini app-fab--absolute mdc-fab__icon material-icons" style="color: #222222;">reply</button>
+                <a id="logoutAnchor" href="/logout"></a>
+            </div>
+                    
+        </div>
+        <div class="mdc-layout-grid__cell mdc-elevation--z4 messages_input_column">
+            <ul class="mdc-list mdc-list--two-line messages_row" id="chatContent"></ul>
+                    
+            <div role="separator" class="mdc-list-divider"></div>
+
+            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon mdc-text-field--upgraded mdc-text-field--dense input_row" style="display: flex; margin-right: 50px; margin-top: 12px;" data-mdc-auto-init="MDCTextField">
+                <input type="text" class="mdc-text-field__input" style="caret-color: #018786;" id="messageInput" autocomplete="off" disabled>
+                <label for="tf-outlined-trailing" class="mdc-floating-label">Mensaje</label>
+                <div class="mdc-notched-outline">
+                    <svg>
+                        <path class="mdc-notched-outline__path" d="M108.531,1h117.26899999999999a4,4 0 0 1 4,4v35.6a4,4 0 0 1 -4,4h-220.6a4,4 0 0 1 -4,-4v-35.6a4,4 0 0 1 4,-4h5.8" style="stroke: #018786;"></path>
+                    </svg>
+                </div>
+                <div class="mdc-notched-outline__idle"></div>
+                <button id="sendButton" class="mdc-fab mdc-fab--mini app-fab--absolute mdc-fab__icon material-icons" style="color: #222222; background-color: #494444;margin-right: -55px; box-shadow: none;margin-bottom: -7px;width: 30px;height: 30px;" disabled>send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside id="newContactDialog" class="mdc-dialog" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description" data-mdc-auto-init="MDCDialog">
+    <div class="mdc-dialog__surface" style="max-width: 250px; min-width: 100px;">
+        <header class="mdc-dialog__header" style="padding-top: 30px; padding-left: calc((250px - 202px)/2);">
+            <h3 class="mdc-dialog__header__title" style="color: #222222; text-align: center;">
+                Agregar contacto
+            </h3>
+        </header>
+        <section class="mdc-dialog__body" style="padding: 0px; margin-top: 0px; width: 170px; margin-left: calc((250px - 170px)/2);">
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input id="newContactDialog_userInput" type="text" class="mdc-text-field__input" style="caret-color: #222222; width: 170px;" autocomplete="off">
+                <label class="mdc-floating-label" for="my-text-field" style="color: unset">Usuario</label>
+                <div class="mdc-line-ripple" style="background-color: #222222;"></div>
+            </div>
+        </section>
+        <section class="mdc-dialog__body" style="padding: 0px; margin-top: 0px; margin-bottom: 20px; width: 170px; margin-left: calc((250px - 170px)/2);">
+            <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+                <input id="newContactDialog_idInput" type="text" class="mdc-text-field__input" style="caret-color: #222222; width: 170px;" autocomplete="off">
+                <label class="mdc-floating-label" for="my-text-field" style="color: unset">ID</label>
+                <div class="mdc-line-ripple" style="background-color: #222222;"></div>
+            </div>
+        </section>
+        <footer class="mdc-dialog__footer" style="width: 210px; margin-left: calc((250px - 210px)/2); margin-bottom: 30px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;">
+            <button type="button" class="mdc-button mdc-button--raised mdc-dialog__footer__button mdc-dialog__footer__button--accept" style="background-color: #018786; width: 100px; padding: 0px; margin-right: 10px;">Aceptar</button>
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" style="color: #018786; width: 100px; padding: 0px;">Cancelar</button>
+        </footer>
+    </div>
+    <div class="mdc-dialog__backdrop"></div>
+</aside>
+
+<aside id="exitDialog" class="mdc-dialog" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description" data-mdc-auto-init="MDCDialog">
+    <div class="mdc-dialog__surface" style="max-width: 270px; min-width: 100px;">
+        <header class="mdc-dialog__header" style="padding-top: 30px;">
+            <h3 class="mdc-dialog__header__title" style="color: #222222; text-align: center;">
+                Cerrar sesión
+            </h3>
+        </header>
+        <section class="mdc-dialog__body" style="padding: 0px; margin-top: 20px; margin-bottom: 20px; text-align: center;">
+            ¿Esta seguro que desea salir?
+        </section>
+        <footer class="mdc-dialog__footer" style="width: 210px; margin-left: calc((270px - 210px)/2); margin-bottom: 30px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;">
+            <button type="button" class="mdc-button mdc-button--raised mdc-dialog__footer__button mdc-dialog__footer__button--accept" style="background-color: #018786; width: 100px; padding: 0px; margin-right: 10px;">Aceptar</button>
+            <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" style="color: #018786; width: 100px; padding: 0px;">Cancelar</button>
+        </footer>
+    </div>
+    <div class="mdc-dialog__backdrop"></div>
+</aside>
+
+<div id="copiedSnackbar" class="mdc-snackbar" aria-live="assertive" aria-atomic="true" aria-hidden="true" data-mdc-auto-init="MDCSnackbar">
+  <div class="mdc-snackbar__text"></div>
+  <div class="mdc-snackbar__action-wrapper">
+    <button type="button" class="mdc-snackbar__action-button"></button>
+  </div>
+</div>
+
+{{/section}}
+
+{{#section 'script'}}    
+<script src="/main.js"></script>
+{{/section}}

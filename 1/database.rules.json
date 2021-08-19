@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "Users": { 
+      "byAuthId": {
+        "$tokensId": {
+          ".indexOn": ".value"
+        }
+      }
+    },
+    "Messages": {
+      "$fromId": {
+        "$toId": {
+          ".write": "root.child('Accounts/byAuthId/'+auth.uid+'/id').val() == $fromId || root.child('Accounts/byAuthId/'+auth.uid+'/id').val() == $toId"
+        }
+      }
+    }
+  }
+}

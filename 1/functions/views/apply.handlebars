@@ -1,0 +1,357 @@
+{{#section 'title'}}
+Guasap - Nuevo Usuario
+{{/section}}
+
+{{#section 'style'}}
+<style>
+  body {
+    background-color: #222;
+    font-family: "Roboto";
+    font-weight: 300; 
+  }
+  .main_container {
+    background-color: #494444;
+    margin-left: calc((100vw - 320px)/2);
+    margin-right: calc((100vw - 320px)/2);
+    margin-top: calc((100vh - 510px)/2);
+    margin-bottom: calc((100vh - 510px)/2);
+    width: 320px;
+    height: 510px;
+    --mdc-layout-grid-margin-desktop: 0px;
+    --mdc-layout-grid-gutter-desktop: 0px;
+    --mdc-layout-grid-margin-tablet: 0px;
+    --mdc-layout-grid-gutter-tablet: 0px;
+    --mdc-layout-grid-margin-phone: 0px;
+    --mdc-layout-grid-gutter-phone: 0px;
+  }
+  .header {
+    text-align: center;
+  }
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-left: calc((320px - 100px)/2);
+    margin-right: calc((320px - 100px)/2);
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #018786;
+  }
+</style>
+{{/section}}
+
+{{#section 'body'}}
+<div class="mdc-layout-grid mdc-layout-grid--fixed-column-width mdc-elevation--z6 main_container">
+
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell">
+      <img class="logo" src="/img/ic_launcher.png">
+    </div>
+  </div>
+
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell">
+      <h1 class="header" style="width: 130px; margin-left: calc((320px - 130px)/2); margin-right: calc((320px - 130px)/2); margin-bottom: 10px; margin-top: 10px;">GUASAP</h1>
+    </div>
+  </div>
+
+  <form method="POST" action="/apply" id="submitForm">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell">
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded mdc-text-field--dense input_row" style="display: flex; margin-left: calc((320px - 240px)/2); width: 240px; margin-bottom: 5px; margin-top: 5px;" data-mdc-auto-init="MDCTextField">
+          <input type="text" name="user" class="mdc-text-field__input" style="caret-color: #018786;" id="userInput" autocomplete="off">
+          <label for="tf-outlined-trailing" class="mdc-floating-label">Usuario</label>
+          <div class="mdc-notched-outline">
+            <svg>
+              <path class="mdc-notched-outline__path" d="M108.531,1h117.26899999999999a4,4 0 0 1 4,4v35.6a4,4 0 0 1 -4,4h-220.6a4,4 0 0 1 -4,-4v-35.6a4,4 0 0 1 4,-4h5.8" style="stroke: #018786;"></path>
+            </svg>
+          </div>
+          <div class="mdc-notched-outline__idle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell">
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded mdc-text-field--dense input_row" style="display: flex; margin-left: calc((320px - 240px)/2); width: 240px; margin-bottom: 5px; margin-top: 5px;" data-mdc-auto-init="MDCTextField">
+          <input type="text" name="id" class="mdc-text-field__input" style="caret-color: #018786;" id="idInput" autocomplete="off">
+          <label for="tf-outlined-trailing" class="mdc-floating-label">ID</label>
+          <div class="mdc-notched-outline">
+            <svg>
+              <path class="mdc-notched-outline__path" d="M108.531,1h117.26899999999999a4,4 0 0 1 4,4v35.6a4,4 0 0 1 -4,4h-220.6a4,4 0 0 1 -4,-4v-35.6a4,4 0 0 1 4,-4h5.8" style="stroke: #018786;"></path>
+            </svg>
+          </div>
+          <div class="mdc-notched-outline__idle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell">
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--upgraded mdc-text-field--dense input_row" style="display: flex; margin-left: calc((320px - 240px)/2); width: 240px; margin-bottom: 5px; margin-top: 5px;" data-mdc-auto-init="MDCTextField">
+          <input type="password" name="password" class="mdc-text-field__input" style="caret-color: #018786;" id="passwordInput" autocomplete="off">
+          <label for="tf-outlined-trailing" class="mdc-floating-label">Contraseña</label>
+          <div class="mdc-notched-outline">
+            <svg>
+              <path class="mdc-notched-outline__path" d="M108.531,1h117.26899999999999a4,4 0 0 1 4,4v35.6a4,4 0 0 1 -4,4h-220.6a4,4 0 0 1 -4,-4v-35.6a4,4 0 0 1 4,-4h5.8" style="stroke: #018786;"></path>
+            </svg>
+          </div>
+          <div class="mdc-notched-outline__idle"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell" style="margin-bottom: 5px; margin-top: 15px;">
+      <button id="sendButton" class="mdc-button mdc-button--raised" style="background-color: #018786; width: 90px; margin-left: calc((320px - 90px)/2);">
+        Enviar
+      </button> 
+    </div>
+  </div>
+
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell">
+      <button id="cancelButton" class="mdc-button" style="color: #018786; width: 100px; margin-left: calc((320px - 100px)/2);">
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell" style="margin-bottom: 5px;">
+      <h4 id="errorOutput" style="margin-left: 10px; width: 360px;"></h4>
+    </div>
+  </div>
+
+</div>
+{{/section}}
+
+{{#section 'script'}}
+<script>
+  var submitForm = document.getElementById("submitForm");
+
+  var sendButton = document.getElementById("sendButton");
+  sendButton.addEventListener("click", (event) => {
+    fetch("/apply.json", {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body:  JSON.stringify({
+        "user": userInput.value,
+        "id": idInput.value,
+        "password": passwordInput.value
+      })
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then((json) => {
+          if (json.error) {
+            errorOutput.innerHTML = json.error;
+            userInput.value = "";
+            idInput.value = "";
+            passwordInput.value = "";
+            return null;
+          } else {
+            console.log("[apply] Gotten Firebase auth token: "+json.authToken);
+            var authToken = json.authToken;
+            return firebase.messaging().requestPermission().then(() => {
+              console.log("[apply] Requested Firebase messaging permission");
+              return firebase.messaging().getToken();
+            }).then((messagingToken) => {
+              console.log("[apply] Gotten Firebase messaging token: "+messagingToken);
+              var session = {};
+              session.messagingToken = messagingToken;
+              document.cookie = ["__session", encodeURIComponent(JSON.stringify(session))].join("=");
+              return firebase.auth().signInWithCustomToken(authToken);
+            })
+          }
+        });
+      } else {
+        errorOutput.innerHTML = "ERROR: Ha ocurrido un error. Intente nuevamente."
+        return null;
+      }
+    }).catch((error) => {
+      console.log(error);
+      errorOutput.innerHTML = "ERROR: Debe autorizar notificaciones."
+      userInput.value = "";
+      idInput.value = "";
+      passwordInput.value = "";
+    });
+  }); 
+
+  var cancelButton = document.getElementById("cancelButton");
+  cancelButton.addEventListener("click", (event) => {
+    window.location = "/";
+  }); 
+
+  var userInput = document.getElementById("userInput");
+  userInput.addEventListener('keyup', (event) => {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      fetch("/apply.json", {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body:  JSON.stringify({
+          "user": userInput.value,
+          "id": idInput.value,
+          "password": passwordInput.value
+        })
+      }).then((response) => {
+        if (response.ok) {
+          return response.json().then((json) => {
+            if (json.error) {
+              errorOutput.innerHTML = json.error;
+              userInput.value = "";
+              idInput.value = "";
+              passwordInput.value = "";
+              return null;
+            } else {
+              console.log("[apply] Gotten Firebase auth token: "+json.authToken);
+              var authToken = json.authToken;
+              return firebase.messaging().requestPermission().then(() => {
+                console.log("[apply] Requested Firebase messaging permission");
+                return firebase.messaging().getToken();
+              }).then((messagingToken) => {
+                console.log("[apply] Gotten Firebase messaging token: "+messagingToken);
+                var session = {};
+                session.messagingToken = messagingToken;
+                document.cookie = ["__session", encodeURIComponent(JSON.stringify(session))].join("=");
+                return firebase.auth().signInWithCustomToken(authToken);
+              })
+            }
+          });
+        } else {
+          errorOutput.innerHTML = "ERROR: Ha ocurrido un error. Intente nuevamente."
+          return null;
+        }
+      }).catch((error) => {
+        console.log(error);
+        errorOutput.innerHTML = "ERROR: Debe autorizar notificaciones."
+        userInput.value = "";
+        idInput.value = "";
+        passwordInput.value = "";
+      });
+    }
+  });
+
+  var idInput = document.getElementById("idInput");
+  idInput.addEventListener('keyup', (event) => {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      fetch("/apply.json", {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body:  JSON.stringify({
+          "user": userInput.value,
+          "id": idInput.value,
+          "password": passwordInput.value
+        })
+      }).then((response) => {
+        if (response.ok) {
+          return response.json().then((json) => {
+            if (json.error) {
+              errorOutput.innerHTML = json.error;
+              userInput.value = "";
+              idInput.value = "";
+              passwordInput.value = "";
+              return null;
+            } else {
+              console.log("[apply] Gotten Firebase auth token: "+json.authToken);
+              var authToken = json.authToken;
+              return firebase.messaging().requestPermission().then(() => {
+                console.log("[apply] Requested Firebase messaging permission");
+                return firebase.messaging().getToken();
+              }).then((messagingToken) => {
+                console.log("[apply] Gotten Firebase messaging token: "+messagingToken);
+                var session = {};
+                session.messagingToken = messagingToken;
+                document.cookie = ["__session", encodeURIComponent(JSON.stringify(session))].join("=");
+                return firebase.auth().signInWithCustomToken(authToken);
+              })
+            }
+          });
+        } else {
+          errorOutput.innerHTML = "ERROR: Ha ocurrido un error. Intente nuevamente."
+          return null;
+        }
+      }).catch((error) => {
+        console.log(error);
+        errorOutput.innerHTML = "ERROR: Debe autorizar notificaciones."
+        userInput.value = "";
+        idInput.value = "";
+        passwordInput.value = "";
+      });
+    }
+  });
+
+  var passwordInput = document.getElementById("passwordInput");
+  passwordInput.addEventListener('keyup', (event) => {
+    event.preventDefault();
+    if (event.key === "Enter") {
+      fetch("/apply.json", {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body:  JSON.stringify({
+          "user": userInput.value,
+          "id": idInput.value,
+          "password": passwordInput.value
+        })
+      }).then((response) => {
+        if (response.ok) {
+          return response.json().then((json) => {
+            if (json.error) {
+              errorOutput.innerHTML = json.error;
+              userInput.value = "";
+              idInput.value = "";
+              passwordInput.value = "";
+              return null;
+            } else {
+              console.log("[apply] Gotten Firebase auth token: "+json.authToken);
+              var authToken = json.authToken;
+              return firebase.messaging().requestPermission().then(() => {
+                console.log("[apply] Requested Firebase messaging permission");
+                return firebase.messaging().getToken();
+              }).then((messagingToken) => {
+                console.log("[apply] Gotten Firebase messaging token: "+messagingToken);
+                var session = {};
+                session.messagingToken = messagingToken;
+                document.cookie = ["__session", encodeURIComponent(JSON.stringify(session))].join("=");
+                return firebase.auth().signInWithCustomToken(authToken);
+              })
+            }
+          });
+        } else {
+          errorOutput.innerHTML = "ERROR: Ha ocurrido un error. Intente nuevamente."
+          return null;
+        }
+      }).catch((error) => {
+        console.log(error);
+        errorOutput.innerHTML = "ERROR: Debe autorizar notificaciones."
+        userInput.value = "";
+        idInput.value = "";
+        passwordInput.value = "";
+      });
+    }
+  });
+
+  var errorOutput = document.getElementById("errorOutput");
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var session = JSON.parse(decodeURIComponent(document.cookie.split("=")[1]));
+      session.authId = user.uid;
+      document.cookie = ["__session", encodeURIComponent(JSON.stringify(session))].join("=");
+      submitForm.submit();
+    }
+  });
+
+</script>
+{{/section}}

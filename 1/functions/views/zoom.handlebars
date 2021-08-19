@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guasap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/ic_launcher.png">
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </head>
+  <body>
+    {{#if url}}
+      <script>
+        var url = "{{{url}}}";
+        window.location = url;
+      </script>
+    {{else}}
+      {{{data}}}
+    {{/if}}
+ </body>
+</html>

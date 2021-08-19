@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{{_sections.title}}}</title>
+    <link rel="shortcut icon" href="/img/ic_launcher.png">
+    <link rel="stylesheet" href="/styles/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="/styles/material-components-web.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="manifest" href="/static/manifest.json">
+
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+    {{{_sections.style}}}
+  </head>
+  <body>
+    {{{_sections.body}}}
+
+    <script src="/__/firebase/4.12.1/firebase.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+    <script src="/scripts/idb.js"></script>
+    <script src="/content-provider.js"></script>
+
+    <script src="/scripts/material-components-web.min.js"></script>
+    <script>mdc.autoInit();</script>
+    
+    {{{_sections.script}}}
+ </body>
+</html>

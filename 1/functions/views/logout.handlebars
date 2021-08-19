@@ -1,0 +1,37 @@
+{{#section 'title'}}
+Guasap - Cargando...
+{{/section}}
+
+{{#section 'style'}}
+<style>
+    body {
+        background-color: #222;
+        font-family: "Roboto";
+        font-weight: 300;
+    }
+</style>
+{{/section}}
+
+{{#section 'body'}}
+{{/section}}
+
+{{#section 'script'}}
+<script>
+    window.addEventListener("load", (event) => {
+        var contentProvider = new ContentProvider("innerdatabase.db");
+        return contentProvider.addDB().then(() => {
+            return contentProvider.deleteSession();
+        }).then(() => {
+            document.cookie = [["__session", ""].join("="), "max-age=0"].join(";");
+            return firebase.auth().signOut();
+        }).then(() => {
+            window.location = "/";
+            return null;
+        }).catch((error) => {
+            console.log(error);
+        });
+    });
+</script>
+{{/section}}
+
+
