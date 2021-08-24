@@ -1,6 +1,6 @@
 ## Frontend/Backend
 
-This repository contains several Frontend/Backend projects testing different ideas and technologies. 
+This repository contains several Frontend/Backend projects implementing different ideas. 
 
 ### Table of contents
 
