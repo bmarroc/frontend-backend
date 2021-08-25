@@ -4,4 +4,4 @@ This repository contains several Frontend/Backend projects implementing differen
 
 ### Table of contents
 
-* [1 - Guasap: a simple firebase chat app](https://github.com/bmarroc/frontend-backend/tree/main/1)
+* [1 - Guasap: a simple Whatsapp-like application](https://github.com/bmarroc/frontend-backend/tree/main/1)
