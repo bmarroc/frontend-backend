@@ -1,6 +1,6 @@
-## Frontend/Backend
+## Full Stack
 
-This repository contains several Frontend/Backend projects implementing different ideas. 
+This repository contains several Full Stack projects implementing different ideas. 
 
 ### Table of contents
 
